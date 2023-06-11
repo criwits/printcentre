@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Hans Print Centre</string>
+
+    <string name="start_printing">YES — I WANT TO PRINT NOW</string>
+    <string name="main_description">Welcome to use the Hans Print Centre!\nDo you have your printing ticket QR Code?</string>
+    <string name="get_ticket">NO — I WANT TO UPLOAD MY FILE</string>
+    <string name="scan_ticket_qr_code">Scan Ticket QR Code</string>
+    <string name="show_your_qr_code">Please show your QR code to the front camera of this device.</string>
+    <string name="invalid_qr_code">Invalid QR Code!</string>
+</resources>

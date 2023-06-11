@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hans Print Centre</string>
+    <string name="start_printing">是的，现在开始打印！</string>
+    <string name="main_description">欢迎使用 Hans Print Centre!\n您是否已有打印凭证二维码？</string>
+    <string name="get_ticket">没有，怎样取得凭证？</string>
+    <string name="scan_ticket_qr_code">扫描您的打印凭证二维码</string>
+    <string name="show_your_qr_code">请向本机的前置摄像头展示您的二维码。</string>
+    <string name="invalid_qr_code">您使用的二维码无效！</string>
+</resources>
