@@ -7,4 +7,6 @@
     <string name="scan_ticket_qr_code">扫描您的打印凭证二维码</string>
     <string name="show_your_qr_code">请向本机的前置摄像头展示您的二维码。</string>
     <string name="invalid_qr_code">您使用的二维码无效！</string>
+    <string name="checking_ticket">正在检查凭证……</string>
+    <string name="downloading_doc">正在下载文档……</string>
 </resources>

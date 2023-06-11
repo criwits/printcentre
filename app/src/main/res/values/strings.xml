@@ -7,4 +7,6 @@
     <string name="scan_ticket_qr_code">Scan Ticket QR Code</string>
     <string name="show_your_qr_code">Please show your QR code to the front camera of this device.</string>
     <string name="invalid_qr_code">Invalid QR Code!</string>
+    <string name="checking_ticket">Checking your ticket…</string>
+    <string name="downloading_doc">Downloading your document…</string>
 </resources>
