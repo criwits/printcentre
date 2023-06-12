@@ -4,13 +4,15 @@ package top.criwits.printcentre;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Environment;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -22,6 +24,12 @@ import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
+
+import de.gmuth.ipp.client.IppJob;
+import de.gmuth.ipp.client.IppPrinter;
+import de.gmuth.ipp.client.IppSubscription;
+import top.criwits.printcentre.printer.PrinterController;
+import top.criwits.printcentre.printer.PrinterControllerKotlinUtils;
 
 public class MainActivity extends KioskActivity {
   @Override
@@ -39,11 +47,18 @@ public class MainActivity extends KioskActivity {
         e.printStackTrace();
       }
     });
+
+    // Init printer, using AsyncTask
   }
 
   private void onStartPrint() throws InterruptedException {
     ProgressDialog dialog = ProgressDialog.show(this, "", "a", true);
     // Check printer status
+    if (PrinterController.checkPrinterStatus() != PrinterController.PrinterStatus.CONNECTED) {
+      dialog.dismiss();
+      Toast.makeText(this, R.string.printer_disconnected, Toast.LENGTH_SHORT).show();
+      return;
+    }
     // Check server status
     dialog.dismiss();
 

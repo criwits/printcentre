@@ -9,4 +9,5 @@
     <string name="invalid_qr_code">Invalid QR Code!</string>
     <string name="checking_ticket">Checking your ticket…</string>
     <string name="downloading_doc">Downloading your document…</string>
+    <string name="printer_disconnected">Printer disconnected. Service unavailable.</string>
 </resources>
