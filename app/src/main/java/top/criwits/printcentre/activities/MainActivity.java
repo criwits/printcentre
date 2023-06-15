@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.File;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
@@ -119,7 +117,6 @@ public class MainActivity extends KioskActivity {
       }
     }
 
-
     // Check printer status
     PreparePrintingTask task = new PreparePrintingTask(this);
     task.execute();
@@ -127,6 +124,79 @@ public class MainActivity extends KioskActivity {
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    class GetDocumentMetaTask extends AsyncTask<String, String, Boolean> {
+      private ProgressDialog dialog;
+      private Activity activity;
+      private int errorResId = 0;
+      private String uuid;
+      private int pages;
+
+      public GetDocumentMetaTask(Activity activity) {
+        this.activity = activity;
+        dialog = new ProgressDialog(activity);
+        dialog.setCancelable(false);
+      }
+
+      @Override
+      protected void onPreExecute() {
+        super.onPreExecute();
+        dialog.show();
+      }
+
+      @Override
+      protected void onProgressUpdate(String... values) {
+        super.onProgressUpdate(values);
+        dialog.setMessage(values[0]);
+      }
+
+      @Override
+      protected Boolean doInBackground(String... strings) {
+        // check meta
+        publishProgress(getString(R.string.getting_document_info));
+        // sleep for 0.7s, to prevent server from being overloaded (bushi
+        try {
+          Thread.sleep(700);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        uuid = strings[0];
+        String documentMetaData = NetworkHelper.getString(Consts.SERVER_URI + "/" + uuid + ".meta");
+        if (documentMetaData == null) {
+          errorResId = R.string.document_not_exist;
+          return false;
+        }
+        // Parse metadata to Int
+        pages = Integer.parseInt(documentMetaData.split("\\s")[0]);
+
+        // Download file
+        publishProgress(getString(R.string.generate_document_preview));
+        if (!NetworkHelper.downloadFile(
+            Consts.SERVER_URI + "/" + uuid + "-preview.png",
+            new File(Consts.getExternalPath("/print/" + uuid + "-preview.png"))
+        )) {
+          errorResId = R.string.document_not_exist;
+          return false;
+        }
+
+        return true;
+      }
+
+      @Override
+      protected void onPostExecute(Boolean status) {
+        super.onPostExecute(status);
+        dialog.dismiss();
+        if (status) {
+          // Put pages and uuid to intent
+          Intent intent = new Intent(activity, PrintSettingsActivity.class);
+          intent.putExtra("pages", pages);
+          intent.putExtra("uuid", uuid);
+          startActivity(intent);
+        } else {
+          Toast.makeText(activity, errorResId, Toast.LENGTH_SHORT).show();
+        }
+      }
+    }
+
     IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
     if (result != null) {
       if (result.getContents() == null) {
@@ -139,14 +209,9 @@ public class MainActivity extends KioskActivity {
           // Check if str is a valid UUID
           try {
             UUID uuid = UUID.fromString(str);
-            // Check if document is valid
-            ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.checking_ticket), true);
-            dialog.dismiss();
-            // Download document
-            ProgressDialog dialog2 = ProgressDialog.show(this, "", getString(R.string.downloading_doc), true);
-            // download document at http://172.16.0.100:20480/document/uuid as PDF
-
-
+            GetDocumentMetaTask task = new GetDocumentMetaTask(this);
+            task.execute(uuid.toString());
+            // ends
           } catch (IllegalArgumentException e) {
             // Show error
             Toast.makeText(this, R.string.invalid_qr_code, Toast.LENGTH_SHORT).show();

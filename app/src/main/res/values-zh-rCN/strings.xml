@@ -11,6 +11,23 @@
     <string name="downloading_doc">正在下载文档……</string>
     <string name="printer_disconnected">打印机连接断开，暂无法使用</string>
     <string name="checking_printer">正在检查打印机……</string>
-    <string name="checking_server">正在检查服务器状态………</string>
+    <string name="checking_server">正在检查服务器状态……</string>
     <string name="server_unavailable">无法连接服务器，暂无法使用</string>
+    <string name="print_settings">设定打印选项</string>
+    <string name="getting_document_info">正在取得文档信息……</string>
+    <string name="generate_document_preview">正在生成文档预览……</string>
+    <string name="document_not_exist">您的凭证已失效！</string>
+    <string name="duplex">双面打印</string>
+    <string name="enable_duplex">启用双面打印</string>
+    <string name="duplex_notice">注意：若启用了双面打印，您需要按本机上的提示完成整个双面打印流程。</string>
+    <string name="copies">份数</string>
+    <string name="start_print_now">开始打印</string>
+    <string name="downloading_document">正在下载您的文档……</string>
+    <string name="download_failed">完整文档下载失败，请重试</string>
+    <string name="printing">正在打印</string>
+    <string name="now_printing">您的打印正在进行中。</string>
+    <string name="stuck_hint">打印机卡纸或进纸失败。请手动修复后，按打印机上的【取消/继续】键</string>
+    <string name="please_wait">正在准备……</string>
+    <string name="sending_document">正在向打印机发送您的文档……</string>
+    <string name="printing_ongoing">打印正在进行……</string>
 </resources>

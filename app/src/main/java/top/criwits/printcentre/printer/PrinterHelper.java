@@ -24,8 +24,16 @@ public class PrinterHelper {
 
   public static PrinterStatus checkPrinterStatus() {
     try {
-      Log.i("PrinterController", "Printer state: " + getPrinter().getState());
-      switch (getPrinter().getState().getCode()) {
+      return checkPrinterStatus(getPrinter());
+    } catch (Exception e) {
+      return PrinterStatus.DISCONNECTED;
+    }
+  }
+
+  public static PrinterStatus checkPrinterStatus(IppPrinter printer) {
+    try {
+      Log.i("PrinterController", "Printer state: " + printer.getState());
+      switch (printer.getState().getCode()) {
         case 3:
           return PrinterStatus.CONNECTED;
         case 4:

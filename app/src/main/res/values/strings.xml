@@ -13,4 +13,21 @@
     <string name="checking_printer">Checking printer…</string>
     <string name="checking_server">Connecting to server…</string>
     <string name="server_unavailable">Server unavailable</string>
+    <string name="print_settings">Print Options</string>
+    <string name="getting_document_info">Getting document information…</string>
+    <string name="generate_document_preview">Generating document preview…</string>
+    <string name="document_not_exist">Document doesn\'t exist!</string>
+    <string name="duplex">Duplex</string>
+    <string name="enable_duplex">Enable duplex</string>
+    <string name="duplex_notice">NOTICE: You need to complete duplex printing with instructions on this screen if duplex is enabled.</string>
+    <string name="copies">Copies</string>
+    <string name="start_print_now">Start Printing</string>
+    <string name="downloading_document">Downloading document…</string>
+    <string name="download_failed">Download failed</string>
+    <string name="printing">Printing</string>
+    <string name="now_printing">Your printing task is ongoing.</string>
+    <string name="stuck_hint">The printer is stuck or out of paper. Please manually fix this issue, then press [Cancel/Continue] button on the printer</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="sending_document">Sending your document…</string>
+    <string name="printing_ongoing">Printing is still ongoing…</string>
 </resources>
