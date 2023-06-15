@@ -10,4 +10,7 @@
     <string name="checking_ticket">正在检查凭证……</string>
     <string name="downloading_doc">正在下载文档……</string>
     <string name="printer_disconnected">打印机连接断开，暂无法使用</string>
+    <string name="checking_printer">正在检查打印机……</string>
+    <string name="checking_server">正在检查服务器状态………</string>
+    <string name="server_unavailable">无法连接服务器，暂无法使用</string>
 </resources>

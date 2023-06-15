@@ -1,4 +1,4 @@
-package top.criwits.printcentre;
+package top.criwits.printcentre.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;

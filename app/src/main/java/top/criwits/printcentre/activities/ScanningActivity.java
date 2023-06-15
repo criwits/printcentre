@@ -1,11 +1,11 @@
-package top.criwits.printcentre;
+package top.criwits.printcentre.activities;
 
 import android.os.Bundle;
 
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
-import java.util.Objects;
+import top.criwits.printcentre.R;
 
 public class ScanningActivity extends KioskActivity{
   private CaptureManager capture;
