@@ -30,4 +30,7 @@
     <string name="please_wait">Please wait…</string>
     <string name="sending_document">Sending your document…</string>
     <string name="printing_ongoing">Printing is still ongoing…</string>
+    <string name="redelivery_the_paper">Please redelivery paper</string>
+    <string name="duplex_instruction">Please re-delivery the output paper</string>
+    <string name="i_finished">I\'ve Finished</string>
 </resources>

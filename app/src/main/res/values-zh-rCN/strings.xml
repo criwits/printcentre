@@ -30,4 +30,7 @@
     <string name="please_wait">正在准备……</string>
     <string name="sending_document">正在向打印机发送您的文档……</string>
     <string name="printing_ongoing">打印正在进行……</string>
+    <string name="redelivery_the_paper">请重新进纸</string>
+    <string name="duplex_instruction">请将已经打印出的纸张保持原来的朝向，重新送入进纸槽。</string>
+    <string name="i_finished">我已完成此操作</string>
 </resources>
